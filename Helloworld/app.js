@@ -5,4 +5,12 @@ Vue.createApp({
 
         }
     }
-}).mount('#app')
+}).mount('#app1')
+
+Vue.createApp({
+    data(){
+        return {
+            greeting:'Hallo welt',
+        }
+    }
+}).mount('#app2')
