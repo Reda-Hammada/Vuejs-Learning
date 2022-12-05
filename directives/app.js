@@ -4,6 +4,7 @@ const vm = Vue.createApp({
             firstName:'Reda',
             lastName:'Hammada',
             age:20,
+            occupation:'Vue js Developer',
             url:'https://hammada-reda.com',
             raw_url:'<a href="https://hammada-reda.com" target="_blank">Reda Hammada</a>'
         }
@@ -15,8 +16,9 @@ const vm = Vue.createApp({
             return `${this.firstName} ${this.lastName.toUpperCase()}`;
         },
         
-        updateLastName(event)
-        {
+        updateLastName(msg,event)
+        {   
+           console.log(msg)
            this.lastName  = event.target.value
         },
 
@@ -28,5 +30,10 @@ const vm = Vue.createApp({
         {
             this.age--
         },
+
+        setOccupation(event){
+
+            this.occupation = event.target.value
+        }
     }
 }).mount('#app')

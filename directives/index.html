@@ -19,10 +19,10 @@
        <input v-model="firstName" type='text' />
 
        <label>Last name:</label>
-       <input @input="updateLastName" :value='lastName' type="text" />
+       <input @input="updateLastName('this is a msg',$event)" :value='lastName' type="text" />
        <p>{{ age }}</p>
        <button v-on:click="increment">Increment</button>
-       <button v-on:click="decrement">Decrement</button>
+       <button v-on:click.ctrl="decrement">Decrement</button>
 
 
        <!--Reda Portfolio-->
@@ -34,6 +34,10 @@
        <p><a v-bind:href="url" target="_blank">Reda Hammada</a></p>
        <p v-html="raw_url"></p>
        
+       <hr/>
+       <!--key modifiers example-->
+       <input type="text" @keyup.enter="setOccupation($event)" />
+       <p>{{ occupation }}</p>
 
     </div>
 
