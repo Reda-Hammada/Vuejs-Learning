@@ -4,12 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css"/> 
     <title>Document</title>
 </head>
 <body>
     
+    <!--  directives  -->
     <div v-cloak id="app">
        <p>{{ fullName() }}</p>
+       <hr />
+
+       <label>First name:</label>
+       <input v-model="firstName" type='text' />
+
+       <label>Last name:</label>
+       <input v-model="lastName" type="text" />
+       
+
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
