@@ -11,6 +11,7 @@
     
     <!--  directives  -->
     <div v-cloak id="app">
+
        <p>{{ fullName() }}</p>
        <hr />
 
@@ -18,13 +19,18 @@
        <input v-model="firstName" type='text' />
 
        <label>Last name:</label>
-       <input v-model="lastName" type="text" />
+       <input @input="updateLastName" :value='lastName' type="text" />
+       <p>{{ age }}</p>
+       <button v-on:click="increment">Increment</button>
+       <button v-on:click="decrement">Decrement</button>
 
 
        <!--Reda Portfolio-->
-       
+
        <!--v-bind  directive-->
        <!--v-html directive-->
+
+       <!--for practice reason rendering raw HTML as data not secure-->
        <p><a v-bind:href="url" target="_blank">Reda Hammada</a></p>
        <p v-html="raw_url"></p>
        
