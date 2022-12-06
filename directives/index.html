@@ -13,31 +13,42 @@
     <div v-cloak id="app">
 
        <p>{{ fullName() }}</p>
-       <hr />
-
-       <label>First name:</label>
-       <input v-model="firstName" type='text' />
-
-       <label>Last name:</label>
-       <input @input="updateLastName('this is a msg',$event)" :value='lastName' type="text" />
-       <p>{{ age }}</p>
-       <button v-on:click="increment">Increment</button>
-       <button v-on:click.ctrl="decrement">Decrement</button>
 
 
-       <!--Reda Portfolio-->
+
+           <!--Reda Portfolio-->
 
        <!--v-bind  directive-->
        <!--v-html directive-->
 
        <!--for practice reason rendering raw HTML as data not secure-->
+
        <p><a v-bind:href="url" target="_blank">Reda Hammada</a></p>
        <p v-html="raw_url"></p>
-       
-       <hr/>
+       <p>{{  occupation }}</p>
+       <p>{{  typeof age }}</p>
+
+
+        <hr />
+
+       <label>First name:</label><br>
+
+       <input v-model.trim.lazy="firstName" type='text' /><br>
+       <label>Last name:</label><br>
+       <input @input="updateLastName('this is a msg',$event)" :value='lastName' type="text" /><br>
+       <label>Age:</label><br>
+       <input type="number"  v-model.number.lazy.trim="age" /><br>
+       <label>Set occupation :</label><br>
+       <input type="text" @keyup.enter="setOccupation($event)" /><br>
+       <button v-on:click="increment">Increment</button> 
+       <button v-on:click.ctrl="decrement">Decrement</button>
+
+
+
        <!--key modifiers example-->
-       <input type="text" @keyup.enter="setOccupation($event)" />
-       <p>{{ occupation }}</p>
+
+
+
 
     </div>
 
