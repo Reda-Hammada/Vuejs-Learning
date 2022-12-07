@@ -1,0 +1,24 @@
+[v-cloak] {
+    display: none;
+}
+
+.purple {
+
+    background-color: #767DEA !important ;
+}
+
+.circle {
+
+    background-color: greenyellow;
+    color:#fff;
+
+}
+
+.text-blue {
+
+    color:blue;
+}
+
+.text-orange {
+    color: orange;
+}
