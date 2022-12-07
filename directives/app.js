@@ -13,10 +13,7 @@ const vm = Vue.createApp({
     },
     methods:{
 
-        fullName()
-        {
-            return `${this.firstName} ${this.lastName.toUpperCase()}`;
-        },
+        
         
         updateLastName(msg,event)
         {   
@@ -37,5 +34,21 @@ const vm = Vue.createApp({
 
             this.occupation = event.target.value
         }
+    },
+    computed:{
+        fullName()
+        {   
+            console.log('full name method is called in every render');
+            return `${this.firstName} ${this.lastName.toUpperCase()}`;
+        }
+      
+    },  
+    watch:{
+        age(newVal, oldVal){
+            setTimeout(() =>{this.age = 75},3000)
+        }
+
     }
+ 
+    
 }).mount('#app')
