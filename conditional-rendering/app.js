@@ -3,6 +3,8 @@ const vm = Vue.createApp({
     {
         return{
          mode:true,
+         number:"1",
+
         }
     },
     methods:

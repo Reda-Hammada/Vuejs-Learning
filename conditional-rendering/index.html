@@ -10,8 +10,14 @@
 <body>
     
     <div v-cloak id="app">
-        <p v-if="mode == false"> showing v-if directive content</p>
+        <p v-if="mode == false"> Hello, Iam a paragraph</p>
         <button v-on:click="togglePara">toggle</button>
+
+        <p v-if="number == 1">I am a v-if</p>
+        <p v-else-if="number == 2">I am a v-else-if</p>
+        <p>I am a v-else</p>
+
+
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
