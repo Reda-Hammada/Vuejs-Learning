@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="./style.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>class style binding</title>
 </head>
 <body>
 
@@ -18,7 +18,9 @@
             <option value="text-blue">Blue</option>
             <option value="text-orange">Orange</option>
         </select>
-        <div class="circle" :class="[selectedColor,circle_classes]">
+        <input type="number" value="{size}"  v-model="size" />
+        <div class="circle" :class="[selectedColor,circle_classes]"
+        :style="[{width:circle_style,height:circle_style,lineHeight:circle_style},{transform:'rotate(0deg)'}]">
             Hallo!
         </div>
     </div>

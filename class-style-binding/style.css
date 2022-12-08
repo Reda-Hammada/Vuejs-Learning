@@ -8,10 +8,13 @@
 }
 
 .circle {
-
     background-color: greenyellow;
     color:#fff;
-
+    border-radius: 70px;
+    -webkit-border-radius: 70px;
+    -moz-border-radius: 70px;
+    -ms-border-radius: 70px;
+    -o-border-radius: 70px;
 }
 
 .text-blue {
