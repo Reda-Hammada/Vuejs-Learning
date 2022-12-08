@@ -13,8 +13,6 @@ const vm = Vue.createApp({
     },
     methods:{
 
-        
-        
         updateLastName(msg,event)
         {   
            console.log(msg)
