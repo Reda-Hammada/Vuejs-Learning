@@ -13,8 +13,12 @@
         <p v-if="mode == false"> Hello, Iam a paragraph</p>
         <button v-on:click="togglePara">toggle</button>
 
-        <p v-if="number == 1">I am a v-if</p>
-        <p v-else-if="number == 2">I am a v-else-if</p>
+        <template v-if="number == 1">
+            <p>I am a v-if</p>
+        </template>
+        <template v-else-if="number == 2">
+            <p>I am a v-else-if</p>
+        </template>
         <p>I am a v-else</p>
 
 
