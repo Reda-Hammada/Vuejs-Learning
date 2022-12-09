@@ -4,8 +4,8 @@ const vm = Vue.createApp({
             birds:['Pigeons','Eagels','Doves','Parrots'],
             people:[
                 {
-                name:'John',
-                age:20,
+                name:'Ayoub',
+                age:22,
                 },
                 {
                  name:'Rick',

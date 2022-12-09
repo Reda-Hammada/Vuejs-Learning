@@ -11,11 +11,11 @@
     
     <div v-cloak id="app">
          <!-- v-for directive  -->
-        <ul v-for="bird in birds">
-            <li>{{ bird }}</li>
-        </ul>
-        <ul v-for="person in people">
-            <li>{{ person.name + ' ' + person.age }}</li>
+        <ol >
+            <li v-for="bird in birds" v-bind:class='bird'>{{ bird }}</li>
+        </ol>
+        <ul >
+            <li v-bind:class="person" v-for="person in people">{{ person.name + ' ' + person.age }}</li>
         </ul>
     </div>
 
