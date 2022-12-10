@@ -24,8 +24,8 @@
           <label>rotateZ: {{ rotateZ }}deg; </label>
           <input v-model="rotateZ"type="range" min="-180" max="180" />
 
-          <button v-on:click.prevent="reset" type="button">Reset</button>
-          <button type="button">Copy</button>
+          <button @click.prevent="reset" type="button">Reset</button>
+          <button @click.prevent="copy" type="button">Copy</button>
         </div>
       </section>
       <section class="output">

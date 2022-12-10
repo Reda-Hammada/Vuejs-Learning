@@ -9,12 +9,22 @@ let vm = Vue.createApp({
         }
     },
     methods:{
-        
+
         reset(){
             this.perspective=0,
             this.rotateX = 0
             this.rotateZ =0
             this. rotateY =0
+        },
+
+         async copy(){
+
+            let text = `transform:${this.setBox.transform}`  
+            await  navigator.clipboard.writeText(text)
+           
+           alert(
+            'CSS coppied successfuly'
+           );
         }
     },
     computed:{
