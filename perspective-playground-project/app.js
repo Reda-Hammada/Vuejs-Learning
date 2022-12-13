@@ -20,7 +20,7 @@ let vm = Vue.createApp({
          async copy(){
 
             let text = `transform:${this.setBox.transform}`  
-            await  navigator.clipboard.writeText(text)
+           await  navigator.clipboard.writeText(text)
            
            alert(
             'CSS coppied successfuly'
