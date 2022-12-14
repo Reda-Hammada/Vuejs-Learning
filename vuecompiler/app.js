@@ -18,7 +18,7 @@ let vm2 =  Vue.createApp({
     data(){
         return{
             name:'reda hammada'
-        }
+        } 
     },
     render(){
         return  Vue.h(
