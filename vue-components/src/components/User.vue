@@ -17,7 +17,7 @@ export default {
          type:Number,
         //  required:true,
         //  default:23
-        /* this run before the component is created.As a result, 
+        /* this run before  the component is created.As a result, 
         we won't have access to the data and methods and methods in computed */
         // validator(value){
 
