@@ -5,6 +5,7 @@
         data(){
             return {
                 flag:false,
+                numbers:[1,2,3,4,5],
             }
         },
         methods:{
@@ -19,8 +20,22 @@
             {
                 console.log('enter fired', el)
 
-                done();
+                 const animation = el.animate(
+                    [{
+                      transform:'scale3d(0,0,0)'
+                    },
+                    {
+                        transform:'scale3d(1,2,6)'
 
+                    }],
+                    {
+                     duration:1000,
+                    }
+                )
+
+                animation.onfinish = () => {
+                    done();
+                }
 
             },
             afterEnter(el)
@@ -38,13 +53,39 @@
             {
 
                 console.log('leave fired', el)
+                const animation = el.animate(
+                    [{
+                      transform:'scale3d(1,2,6)'
+                    },
+                    {
+                        transform:'scale3d(0,0,0)'
 
-                done();
+                    }],
+                    {
+                     duration:1000,
+                    }
+                )
+
+                animation.onfinish = () => {
+                    done();
+                }
+
             },
             afterLeave(el)
             {
                 console.log('after-leave fired', el)
 
+            },
+            addItem(){
+
+                const number = Math.floor(Math.random() * 100 +1);
+                const index = Math.floor(Math.random() * this.numbers.length);
+                this.numbers.splice(index, 0,number)
+                console.table(this.numbers)
+            },
+            removeItem(index){
+                this.numbers.splice(index,1);
+                console.table(this.numbers)
             }
 
         }
@@ -54,9 +95,9 @@
 
 <template>
     <div>
-        <button @click="Toggle" type="button">Toggle</button>
-
         <!-- <button @click="Toggle" type="button">Toggle</button>
+
+        <button @click="Toggle" type="button">Toggle</button>
         <transition name="fade" mode="out-in">
             <h2 v-if="flag === true">Hello world!</h2>
             <h2 v-else>another hello</h2>
@@ -64,7 +105,7 @@
         <!-- <transition name="zoom" mode="out-in">
             <h2 v-if="flag == true">Hello browser</h2>
         </transition> -->
-
+<!-- 
 
         <transition
             @before-enter="beforEnter"
@@ -73,10 +114,23 @@
             @before-leave="beforeLeave"
             @leave="leave"
             @after-leave="afterLeave"
+            :css = 'true'
         >
             <h2 v-if="flag == true">Hey</h2>
-        </transition>
+        </transition> -->
 
+        <button v-on:click="addItem">Add</button>
+        <ul>
+           <transition-group name="fade">
+                    <li 
+                    v-on:click="removeItem(index)" 
+                    v-for="(number, index) in numbers" 
+                    :key="number">
+                        {{ number }}
+                    </li>
+
+           </transition-group>
+        </ul>
     </div>
 </template>
 
