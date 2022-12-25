@@ -121,11 +121,13 @@
 
         <button v-on:click="addItem">Add</button>
         <ul>
-           <transition-group name="fade">
+           <transition-group 
+           name="fade" 
+           mode="out-in">
                     <li 
                     v-on:click="removeItem(index)" 
                     v-for="(number, index) in numbers" 
-                    :key="number">
+                    :key="index">
                         {{ number }}
                     </li>
 
@@ -152,8 +154,14 @@ h2{
  .fade-enter-active{
 
     transition:all 1s linear;
+    position: absolute;
  }
 
+ .fade-move {
+
+    transition:all 1s linear;
+
+ }
  .fade-leave-to {
 
     transition:all 1s linear;
