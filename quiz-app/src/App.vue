@@ -97,7 +97,8 @@ export default {
         this.questionsAnswered += 1
     },
     updateMinResult(){
-        this.results.min +=1
+      
+        alert(this.results[0].min++)
     }
   }
 }
@@ -105,9 +106,9 @@ export default {
 
 <template>
   <div class="ctr"> 
-    <Questions @update-Questions-Answered="updateAnsweredQuestion" v-if="questionsAnswered < questions.length"  :questions = questions  :questionsAnswered="questionsAnswered"/>
+    <Questions @update-Result-Min='updateMinResult' @update-Questions-Answered="updateAnsweredQuestion" v-if="questionsAnswered < questions.length"  :questions = questions  :questionsAnswered="questionsAnswered"/>
     <Result v-else  :results = results />
-    <button  @click.prevent='reset' type="button" class="reset-btn">Reset</button>
+    <button   @click.prevent='reset' type="button" class="reset-btn">Reset</button>
   </div>
 </template>
 
