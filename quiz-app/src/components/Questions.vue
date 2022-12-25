@@ -1,23 +1,48 @@
 <script>
  export default{
-  name:'Questions'
+  name:'Questions',
+  props:{
+    questions:{
+      type:Array,
+      required:true,
+    },
+    questionsAnswered:{
+      type:Number,
+      required:true,
+    }
+  },
+  methods:{
+    getAnswer(event){
+        this.$emit('updateQuestionsAnswered')
+        let answer = event.target.innerHTML;
+
+        if(answer){
+
+        }
+      
+    }
+  }
  }
+
 </script>
 
 <template>
    <div class="questions-ctr">
-     <div class="progress">
+     <div class="progress"> 
        <div class="bar"></div>
-       <div class="status">1 out of 3 questions answered</div>
+       <div class="status">{{ questionsAnswered }} out of {{ questions.length }} questions answered</div>
      </div>
-     <div class="single-question">
-       <div class="question">Question 1</div>
-       <div class="answers">
-        <div class="answer">Sample Answer 1</div>
-        <div class="answer">Sample Answer 2</div>
-        <div class="answer">Sample Answer 3</div>
-        <div class="answer">Sample Answer 4</div>
-       </div>
+    
+     <div v-for="question in questions"  :key="question.q"  class="single-question">
+      <div>
+        <div  class="question">{{ question.q }}</div>
+          <div class="answers">
+            <div @click="getAnswer($event)" v-for="answer in question.answers" :key="answer.answers" class="answer">
+              {{ answer.text }}
+            </div>
+        
+        </div>
+      </div>
      </div>
    </div>
 </template>

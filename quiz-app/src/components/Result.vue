@@ -1,19 +1,26 @@
 <script>
  export default{
-  name:'Result'
+  name:'Result',
+  props:{
+    results:{
+      type:Array,
+      required:true,
+    }
+  }
 
  }
 </script>
 
 <template>
-  <div class="result">
-    <div class="title">
-      You got sample result 1!
-    </div>
-    <div class="dec">
-      Enter a short decription here about the result.
+  <div v-for="result in results" :key="result" class="result">
+    <div class="title" v-if="result.max <=2 ">
+       {{ result.title }}
     </div>
 
+    <div v-if="result.max <= 2" :key=" result.desc" class="dec">
+      {{ result.desc }}
+    </div>
+ 
   </div>
 </template>
 
