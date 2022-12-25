@@ -6,21 +6,22 @@
       type:Array,
       required:true,
     }
+  },
+  returnResult(){
+  
   }
-
  }
 </script>
 
 <template>
   <div v-for="result in results" :key="result" class="result">
-    <div class="title" v-if="result.max <=2 ">
+    <div class="title" >
        {{ result.title }}
     </div>
-
-    <div v-if="result.max <= 2" :key=" result.desc" class="dec">
+     <div class="desc">
       {{ result.desc }}
-    </div>
- 
+     </div>
+
   </div>
 </template>
 

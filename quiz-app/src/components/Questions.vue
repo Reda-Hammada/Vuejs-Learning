@@ -12,20 +12,22 @@
     }
   },
   methods:{
-    getAnswer(event,index){
-        this.$emit('updateQuestionsAnswered')
-  
-      
-    }
+    getAnswer(is_correct){
+        this.$emit('updateQuestionsAnswered');
+        if(is_correct){
+          this.$emit('updateTotalCorrect')
+        }
+     }
+     
   }
- }
+}
 
 </script>
 
 <template>
    <div class="questions-ctr">
      <div class="progress"> 
-       <div class="bar"></div>
+       <div class="bar" :style="{width: `${(questionsAnswered / questions.length)*100}% ` }"></div>
        <div class="status">{{ questionsAnswered }} out of {{ questions.length }} questions answered</div>
      </div>
     
@@ -33,7 +35,7 @@
       <div v-show="questionsAnswered == index">
         <div  class="question">{{ question.q }}</div>
           <div class="answers">
-            <div @click="getAnswer($event)" v-for="answer in question.answers" :key="answer.answers" class="answer">
+            <div  @click="getAnswer(answer.is_correct)" v-for="answer in question.answers" :key="answer.answers" class="answer">
               {{ answer.text }}
             </div>
         

@@ -1,6 +1,7 @@
 <script>
  import Result from './components/Result.vue'
  import Questions from './components/Questions.vue'
+ import './assets/main.css'
 
 export default {
   name:'App',
@@ -11,6 +12,7 @@ export default {
   data(){
     return {
         questionsAnswered : 0,
+        totalCorrect : 0,
         questions: [
             {
             q: 'What is 2 + 2?', 
@@ -91,14 +93,19 @@ export default {
   methods:{
     reset(){
       this.questionsAnswered = 0
+      this.totalCorrect = 0
+
     },
     updateAnsweredQuestion()
     {
         this.questionsAnswered += 1
+        console.log(this.questionsAnswered)
     },
-    updateMinResult(){
+    updateCorrect(){
       
-        alert(this.results[0].min++)
+       this.totalCorrect += 1
+               console.log(this.totalCorrect)
+
     }
   }
 }
@@ -106,7 +113,7 @@ export default {
 
 <template>
   <div class="ctr"> 
-    <Questions @update-Result-Min='updateMinResult' @update-Questions-Answered="updateAnsweredQuestion" v-if="questionsAnswered < questions.length"  :questions = questions  :questionsAnswered="questionsAnswered"/>
+    <Questions @update-Total-Correct='updateCorrect' @update-Questions-Answered="updateAnsweredQuestion" v-if="questionsAnswered < questions.length"  :questions = questions  :questionsAnswered="questionsAnswered"/>
     <Result v-else  :results = results />
     <button   @click.prevent='reset' type="button" class="reset-btn">Reset</button>
   </div>
