@@ -99,12 +99,10 @@ export default {
     updateAnsweredQuestion()
     {
         this.questionsAnswered += 1
-        console.log(this.questionsAnswered)
     },
     updateCorrect(){
       
        this.totalCorrect += 1
-               console.log(this.totalCorrect)
 
     }
   }
@@ -113,9 +111,25 @@ export default {
 
 <template>
   <div class="ctr"> 
-    <Questions @update-Total-Correct='updateCorrect' @update-Questions-Answered="updateAnsweredQuestion" v-if="questionsAnswered < questions.length"  :questions = questions  :questionsAnswered="questionsAnswered"/>
-    <Result v-else  :results = results />
-    <button   @click.prevent='reset' type="button" class="reset-btn">Reset</button>
+    <transition name="fade" mode="out out-in">
+        <Questions @update-Total-Correct='updateCorrect'
+               @update-Questions-Answered="updateAnsweredQuestion" 
+               v-if="questionsAnswered < questions.length"  
+               :questions = questions  
+               :questionsAnswered="questionsAnswered"
+               />
+        <Result v-else  :results = results 
+                    :totalCorrect = totalCorrect
+
+              />
+    </transition>
+
+    <button   @click.prevent='reset'
+     type="button" 
+     class="reset-btn
+     ">
+     Reset
+    </button>
   </div>
 </template>
 

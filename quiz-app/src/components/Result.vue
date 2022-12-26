@@ -5,22 +5,28 @@
     results:{
       type:Array,
       required:true,
+    },
+    totalCorrect:{
+      type:Number,
+      required:true
     }
   },
-  returnResult(){
   
-  }
  }
 </script>
 
-<template>
-  <div v-for="result in results" :key="result" class="result">
-    <div class="title" >
-       {{ result.title }}
+<template >
+  <div  class="result">
+    <div v-for="result in results" :key="result">
+      <div v-show="totalCorrect == result.min">
+          <div class="title" >
+            {{ result.title }}
+          </div>
+          <div class="desc">
+            {{ result.desc }}
+          </div>
+      </div>
     </div>
-     <div class="desc">
-      {{ result.desc }}
-     </div>
 
   </div>
 </template>
