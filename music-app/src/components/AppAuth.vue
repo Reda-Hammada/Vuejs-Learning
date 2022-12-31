@@ -6,6 +6,16 @@ export default {
   data() {
     return {
       tab: "login",
+      schema:{
+        name:"required",
+        email:"",
+        age:"",
+        password:"",
+        confirm_password:"",
+        country:"",
+        tos:"",
+
+      }
     };
   },
   name: "AppAuth",
@@ -77,7 +87,7 @@ export default {
           </ul>
 
           <!-- Login Form -->
-          <form v-show="tab === 'login'">
+          <vee-form v-show="tab === 'login'">
             <!-- Email -->
             <div class="mb-3">
               <label class="inline-block mb-2">Email</label>
@@ -102,23 +112,26 @@ export default {
             >
               Submit
             </button>
-          </form>
+          </vee-form>
           <!-- Registration Form -->
-          <form v-show="tab ==='register'">
+          <vee-form v-show="tab ==='register'" :validation-schema="schema">
             <!-- Name -->
             <div class="mb-3">
               <label class="inline-block mb-2">Name</label>
-              <input
+              <vee-field
                 type="text"
+                name="name"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Enter Name"
               />
+              <errorMessage  class="text-red-600" name="name"/>
             </div>
             <!-- Email -->
             <div class="mb-3">
               <label class="inline-block mb-2">Email</label>
-              <input
+              <vee-field
                 type="email"
+                name="email"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Enter Email"
               />
@@ -126,16 +139,18 @@ export default {
             <!-- Age -->
             <div class="mb-3">
               <label class="inline-block mb-2">Age</label>
-              <input
+              <vee-field
                 type="number"
+                name="age"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
               />
             </div>
             <!-- Password -->
             <div class="mb-3">
               <label class="inline-block mb-2">Password</label>
-              <input
+              <vee-field
                 type="password"
+                name="password"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Password"
               />
@@ -143,7 +158,8 @@ export default {
             <!-- Confirm Password -->
             <div class="mb-3">
               <label class="inline-block mb-2">Confirm Password</label>
-              <input
+              <vee-field
+                name="confirm_password"
                 type="password"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Confirm Password"
@@ -152,17 +168,18 @@ export default {
             <!-- Country -->
             <div class="mb-3">
               <label class="inline-block mb-2">Country</label>
-              <select
-                class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
-              >
+              <vee-field  as="select" name="country"
+                class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded">
+              
                 <option value="USA">USA</option>
                 <option value="Mexico">Mexico</option>
                 <option value="Germany">Germany</option>
-              </select>
+              </vee-field>
             </div>
             <!-- TOS -->
             <div class="mb-3 pl-6">
-              <input
+              <vee-field
+                name="tos"
                 type="checkbox"
                 class="w-4 h-4 float-left -ml-6 mt-1 rounded"
               />
@@ -174,7 +191,7 @@ export default {
             >
               Submit
             </button>
-          </form>
+          </vee-form>
         </div>
       </div>
     </div>

@@ -11,15 +11,5 @@ export default defineStore(
         }
       }
     },
-    'User',{
-        state :()=>({
-            isLogged: false,
-            
-        }),
-        getters:{
-            checkLogged(state){
-              let local = localStorage.getItem('user')
-            }
-        }
-    }
+    
 );
