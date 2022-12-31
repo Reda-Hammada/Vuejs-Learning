@@ -7,9 +7,9 @@ export default {
     return {
       tab: "login",
       schema:{
-        name:"required",
-        email:"",
-        age:"",
+        name:"required|min:3|max:100|alpha_spaces",
+        email:"required|email",
+        age:"required|min_value:18|max_value:100",
         password:"",
         confirm_password:"",
         country:"",
@@ -114,7 +114,7 @@ export default {
             </button>
           </vee-form>
           <!-- Registration Form -->
-          <vee-form v-show="tab ==='register'" :validation-schema="schema">
+          <vee-form v-show="tab ==='register'" :validation-schema="schema" >
             <!-- Name -->
             <div class="mb-3">
               <label class="inline-block mb-2">Name</label>
@@ -123,18 +123,21 @@ export default {
                 name="name"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Enter Name"
+              
               />
               <errorMessage  class="text-red-600" name="name"/>
             </div>
             <!-- Email -->
             <div class="mb-3">
               <label class="inline-block mb-2">Email</label>
-              <vee-field
+              <vee-field 
                 type="email"
                 name="email"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Enter Email"
+                
               />
+              <errorMessage name='email' class="text-red-600" />
             </div>
             <!-- Age -->
             <div class="mb-3">
@@ -142,8 +145,10 @@ export default {
               <vee-field
                 type="number"
                 name="age"
+              
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
               />
+              <errorMessage name="age" class="text-red-600" />
             </div>
             <!-- Password -->
             <div class="mb-3">
