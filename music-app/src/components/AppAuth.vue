@@ -13,7 +13,7 @@ export default {
         password: "required|min:9|max:20|not_one_of:password",
         confirm_password: "confirmed:@password",
         country: "required|not_one_of:someCountry",
-        tos: "required",
+        tos: "tos",
       },
     };
   },
