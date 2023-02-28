@@ -35,7 +35,7 @@ export default {
     defineRule("confirmed", confirmed);
     defineRule("not_one_of", not_one_of);
 
-    configure({
+    configure({ 
       generateMessage: (ctx) => {
         const messages = {
              
@@ -53,10 +53,14 @@ export default {
 
         const message = messages[ctx.rule.name] ?
                         messages[ctx.rule.name] :
-                        `The field ${ctx}.field is invalid`;
+                        `The field ${ctx.field} is invalid`;
                
         return message;
       },
+      validateOnBlur: true,
+      validateOnChange:true,
+      validateOnInput:true,
+      validateOnModelUpdatey:true,
     });
   },
 };

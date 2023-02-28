@@ -1,6 +1,8 @@
 <script>
+
 import { mapState, mapWritableState } from "pinia";
 import useModalStore from "@/stores/modal.js";
+import firebase from '@/includes/firebase';
 
 export default {
   data() {
@@ -23,8 +25,16 @@ export default {
     ...mapWritableState(useModalStore, ["isOpen"]),
   },
   methods: {
-    register(values) {
-      console.log(values);
+    async register(values) {
+      try{
+        let userCred = await firebase.auth().createUserWithEmailAndPassword(
+        values.email,
+        values.password,
+      );
+      }
+      catch(err){
+        console.log(err);
+      }
     },
   },
 };
@@ -35,7 +45,7 @@ export default {
   <div
     class="fixed z-10 inset-0 overflow-y-auto"
     id="modal"
-    :class="hiddenClass"
+    :class="hiddenClass" 
   >
     <div
       class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
@@ -214,6 +224,7 @@ export default {
             </div>
 
             <button
+              @submit="register(values)"
               type="submit"
               class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition hover:bg-purple-700"
             >
