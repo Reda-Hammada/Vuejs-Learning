@@ -1,10 +1,10 @@
 <script>
-import { ref, reactive, toRefs } from "vue";
+import { ref, reactive, toRefs, watchEffect,watch, computed } from "vue";
 
 export default {
   name: "AppCompistion",
   setup() {
-    
+
     let num = ref(0);
 
     const user = reactive({
@@ -19,10 +19,34 @@ export default {
       user.age = 23;
     }, 3000);
 
+     const renderReversedPhrae =  () => {
+        reveresedPhrase.value = phrase.value
+
+     }
+
+    const phrase  = ref('')
+    const reveresedPhrase  = ref('')
+    const double = computed(()=>{
+        return num.value * 2
+    })
+    // watcher 
+    watch([phrase], ([newVal,oldVal])=>{
+        renderReversedPhrae();
+    })
+
+    watchEffect(() => {
+         renderReversedPhrae();
+    })
+
+
     return {
       num,
       increment,
       ...toRefs(user),
+      phrase,
+      reveresedPhrase,
+      double,
+
     };
   },
 };
@@ -34,4 +58,12 @@ export default {
   <p>{{ age }}</p>
 
   <button @click="increment">click me!</button>
+  
+  <input type="text"
+         v-model="phrase"
+
+         />
+
+ {{ reveresedPhrase }}
+ {{ double }}
 </template>
