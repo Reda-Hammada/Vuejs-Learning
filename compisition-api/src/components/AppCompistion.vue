@@ -1,34 +1,26 @@
 <script>
-  import {ref,reactive} from 'vue';
+import { ref, reactive } from "vue";
 
-    export default{
-        name:'AppCompistion',
-        setup() {
-            let num = ref(0);
-            const user =  reactive({
-                name: 'John',
-                age: 20,
-            })
+export default {
+  name: "AppCompistion",
+  setup() {
+    let num = ref(0);
 
-            const increment =  () =>{
-                num.value++;
-            }
-             setTimeout(()=>{
-                user.name = 'Reda'
-             },3000)
+    const increment = () => {
+      num.value++;
+    };
 
-           return{
-            num,
-            increment,
-            user
-           };
-        }
-    
-    }
+    return {
+      num,
+      increment,
+      
+    };
+  },
+};
 </script>
 
 <template>
-    <p>{{ num }}</p>
-    <p>{{user.name}}</p>
-    <button @click="increment">click me!</button>
+  <p>{{ num }}</p>
+  <!-- <p>{{ user.name }}</p> -->
+  <button @click="increment">click me!</button>
 </template>
